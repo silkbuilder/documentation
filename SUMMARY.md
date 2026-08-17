@@ -86,3 +86,6 @@
   * [Button with Confirmation](how_to/confirm_button.md)
   * [Toggle List](how_to/toggle_list.md)
   * [Table Inputs](how_to/table_input.md)
+  * [Emailing Process](how_to/emails.md)
+  * [File to Response](how_to/file2response.md)
+  * [Sending Data to a Service for Processing](how_to/post2service.md)

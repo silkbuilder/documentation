@@ -193,6 +193,12 @@ If a column is provided, it returns the value of the column at the provided posi
 | index | <code>Integer</code> | The object item's index position |
 | column | <code>String</code> | (optional) The column name whose value will be returned |
 
+<a name="DataProvider+getJSON"></a>
+
+### getJSON() ⇒ <code>JSON</code>
+Return the data provider data in JSON format
+
+**Kind**: instance method of [<code>DataProvider</code>](#DataProvider)  
 <a name="DataProvider+getLangID"></a>
 
 ### getLangID() ⇒ <code>String</code>

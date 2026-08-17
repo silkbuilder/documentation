@@ -386,6 +386,21 @@ Toggle the search input from visible to hidden. It requires the property `search
 This event is triggered after the table content has been loaded and its content displayed. Created with the ```Table.on("afterLoad", function(){})``` method.
 
 **Kind**: event emitted by [<code>Table</code>](#Table)  
+<a name="Table+Event_beforeClick"></a>
+
+### on:beforeClick (coldIndex, dbItem, realClick, mouseEvent)
+This event is triggered before the click actions get executed. Created with the ```Table.on("beforeClick", function(colIndex, dbItem, realClick, mouseEvent){})``` method.
+If the event return false, the click process is canceled.
+
+**Kind**: event emitted by [<code>Table</code>](#Table)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| coldIndex | <code>Integer</code> | The column clicked. The first one is 0. |
+| dbItem | <code>Object</code> | The dataProvider index of the selected row. |
+| realClick | <code>Boolean</code> | Returns true if the "click" has been triggered by a physical click. |
+| mouseEvent | <code>Object</code> | The mouse click even object. |
+
 <a name="Table+Event_beforeLoad"></a>
 
 ### on:beforeLoad
@@ -395,7 +410,7 @@ This event is triggered before the table content is loaded. Created with the ```
 <a name="Table+Event_click"></a>
 
 ### on:click (coldIndex, dbIndex, realClick, mouseEvent)
-This event is triggered when a row is clicked. Created with the ```Table.on("click", function(colIndex, dpIndex, mouseEvent){})``` method.
+This event is triggered when a row is clicked. Created with the ```Table.on("click", function(colIndex, dpIndex, realClick, mouseEvent){})``` method.
 
 **Kind**: event emitted by [<code>Table</code>](#Table)  
 

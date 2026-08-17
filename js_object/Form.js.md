@@ -28,14 +28,15 @@ Returns a DataProvider instance.
 | id | <code>String</code> |  | Unique identifier. |
 | options | <code>Object</code> |  | Object containing the DataProvider configuration options. |
 | [options.startMode] | <code>Boolean</code> | <code>false</code> | Starting mode. True is editing, and false is read-only. |
-| [options.dialog] | <code>Boolean</code> | <code>true</code> | Sets the dialog used. If *false*, the automatic generation of the submit button is disabled. |
 | [opsions.dataSource] | <code>String</code> |  | The name of the Table or DataProvider. |
 | [options.insertBt] | <code>String</code> |  | The name of the button used to activate an insert action. |
 | [options.updateBt] | <code>String</code> |  | The name of the button used to activate an update action. |
 | [options.deleteBt] | <code>String</code> |  | The name of the button used to activate a delete action. |
 | [options.cancelBt] | <code>String</code> |  | The name of the button used to activate a cancel action. |
 | [options.submitBt] | <code>String</code> |  | The name of the button used to activate a submit action. |
+| [options.dialog] | <code>Boolean</code> | <code>true</code> | Sets the dialog used. If *false*, the automatic generation of the submit button is disabled. |
 | [options.dialogTitle] | <code>String</code> |  | The title of the dialog box. |
+| [options.dialogPosition] | <code>String</code> |  | The position in which the dialog box will be placed at the page's header, top of bottom fo the  By default, not provided, the dialog bar is placed in the page's header. |
 | [options.insertTitle] | <code>String</code> |  | The title for the insert action. |
 | [options.updateTitle] | <code>String</code> |  | The title for the update action. |
 | [options.deleteTitle] | <code>String</code> |  | The title for the delete action. |
@@ -328,7 +329,7 @@ This event is triggered after the form loads the data from the data source and t
 <a name="Form+Event_afterModeChange"></a>
 
 ### on:afterModeChange
-This event is triggered after the mode has changed. Created with the ```Form.on("afterModeChange", function(mode){})``` method. The mode changes between read-only (false) and editable (true);
+This event is triggered after the mode has changed. Created with the ```Form.on("afterModeChange", function(mode,action){})``` method. The mode changes between read-only (false) and editable (true);
 This event is similar to the *modeChange* event, and it is added for coding and reference convenience.
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  
@@ -346,13 +347,14 @@ This event is triggered before the form loads the data from the data source. It 
 <a name="Form+Event_beforeModeChange"></a>
 
 ### on:beforeModeChange
-This event is triggered before the mode changes are applied. Created with the ```Form.on("beforeModeChange", function(mode){})``` method. The mode changes between read-only (false) and editable (true);
+This event is triggered before the mode changes are applied. Created with the ```Form.on("beforeModeChange", function(mode,action){})``` method. The mode changes between read-only (false) and editable (true);
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  
 <a name="Form+Event_beforeSubmit"></a>
 
 ### on:beforeSubmit
-This event is triggered before the form's data is validated for submission. Use this event to apply changes or run operations before the form's input validation. If it returns false, the process is canceled. Created with the ```Form.on("beforeSubmit", function(){})``` method.
+This event is triggered before the form's data is validated for submission. Use this event to apply changes or run operations before the form's input validation.
+If it returns false, the process is canceled. Created with the ```Form.on("beforeSubmit", function(){})``` method.
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  
 <a name="Form+Event_cancel"></a>
@@ -410,7 +412,7 @@ This event is triggered before the form is set for an insert. If the function re
 <a name="Form+Event_modeChange"></a>
 
 ### on:modeChange
-This event is triggered after the mode has changed. Created with the ```Form.on("modeChange", function(mode){})``` method. The mode changes between read-only (false) and editable (true);
+This event is triggered after the mode has changed. Created with the ```Form.on("modeChange", function(mode,action){})``` method. The mode changes between read-only (false) and editable (true);
 This event is similar to the *afterModeChange* event, and it is added for coding and reference convenience.
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  
@@ -429,13 +431,13 @@ This event is triggered before the insert button's visibility changes. It is cre
 <a name="Form+Event_showUdatetBt"></a>
 
 ### on:showUdatetBt
-This event is triggered before the update button's visibility changes. Created with the ```Form.on("showUdatetBt", function(){})``` method. If the function returns *false* the button is not displayed.
+This event is triggered before the update button's visibility changes. Created with the ```Form.on("showUpdateBt", function(){})``` method. If the function returns *false* the button is not displayed.
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  
 <a name="Form+Event_submit"></a>
 
 ### on:submit
-This event is triggered before the form's data has been validated and is ready to be submitted for processing. The event *beforeSubmit* is triggered before this event.
+This event is triggered after the form's data has been validated and is ready to be submitted to the DataProvider for processing. The event *beforeSubmit* is triggered before this event.
 If the function returns *false* the process is canceled. Created with the ```Form.on("submit", function(){})``` method.
 
 **Kind**: event emitted by [<code>Form</code>](#Form)  

@@ -34,7 +34,8 @@ Used standalone:
   mode="false"
   cssClass=""
   extraProperties=""
-  htmlConfigFile="/ckeditor-conf/bar-simple.js"
+  htmlToolbar="/ckeditor-conf/bar-simple.js"
+  htmlTheme="/ckeditor-conf/bar-simple.js"
   target=""
   prompt=""
   promptValue=""
@@ -57,6 +58,7 @@ Used standalone:
   targetPage=""
   timer=""
   toggleList=""
+  autocomplete="false"
 />
 ```
 
@@ -65,7 +67,7 @@ Used standalone:
 ### id<sup>*</sup>
 If used with a *silk:Form* the unique identifier is the name of the data column to be viewed or edited.<br>The unique identifier is any name if used as a standalone component.<br>Default Value: *Empty*.
 ### type<sup>*</sup>
-The input type: text, textarea, code, sql, xml, js, xhtml, css html, date, time, datetime, select, numeric, integer, decimal, checkbox, button, options, radio, password, file, email, hidden.<br>Default Value: *Empty*.
+The input type: text, textarea, code, sql, xml, js, xhtml, css html, date, time, datetime, select, numeric, integer, decimal, checkbox, button, options, radio, password, file, email, hidden, external.<br>Default Value: *Empty*.
 ### name
 Defines the "name" of the input when used as a regular form HTML tag.<br>Default Value: *Empty*.
 ### form
@@ -116,7 +118,9 @@ To set the input mode at initialization time. If "write" or *true,* it starts in
 The extra CSS classes to use with the input element.<br>Default Value: *Empty*.
 ### extraProperties
 Used to add extra HTML properties to the unavailable using the *silk:Input* properties.<br>Default Value: *Empty*.
-### htmlConfigFile
+### htmlToolbar
+The JavaScript array to fill the Quill toolbar. To be used with type "html".<br>Default Value: */ckeditor-conf/bar-simple.js*.
+### htmlTheme
 The JavaScript file containing the custom configuration for CKEditor. To be used with type "html".<br>Default Value: */ckeditor-conf/bar-simple.js*.
 ### target
 To indicate the HTML element in which inputs will be rendered. Not necessary if used with *silk:Form*.<br>Default Value: *Empty*.
@@ -162,3 +166,5 @@ Defines the *silk:Page* that will be selected/shown when the input is clicked.  
 If set to "true," the keyboard typing is monitored and the event "timer" is triggered when the user stops typing after 400 milliseconds has passed. The expected milliseconds can also be provided as a value.<br>Default Value: *Empty*.
 ### toggleList
 The list of comma-separated elements that will be toggled together with the component.<br>The value "parent" toggles the immediate parent element.<br>The value "grandpa" toggles the grandparent element.<br>Default Value: *Empty*.
+### autocomplete
+Sets the input to be hidden if the value is empty while in read mode.<br>Default Value: *false*.

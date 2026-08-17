@@ -50,7 +50,7 @@ This template will use the properties: imageURL, eventName, description, eventID
 
 ## Data Formating
 
-The data extracted from the *DataProvider* during the data binding process can receive a formatting pattern added to the data binding template after a pipe symbol separating the property name "|."
+The data extracted from the *DataProvider* during the data binding process can receive a formatting pattern added to the data binding template after a pipe symbol, separating the property name "|."
 
 ```xml
 {startDate|<formating-pattern>}
@@ -59,13 +59,18 @@ The data extracted from the *DataProvider* during the data binding process can r
 Silk Builder provides common patterns to help data formatting during development:
 
 - {column|date} - Renders the date as MM/dd/yyy
+- {column|time} - Renders the date as hh:mm: a
+- {column|datetime} - Renders the date as MM/dd/yyy hh:mm: a
 - {column|numeric} - Renders number as ##'###,###
 - {column|number} - Renders number as ##'###,###
 - {column|integer} - Renders number as ##'###,###
 - {column|decimal} - Renders decimal number as ##'###,###.00
 - {column|byte} - Renders as ###KB or ###MB 
+- {column|upper} - All characters to upper case
+- {column|lower} - All characters to lower case
+- {column|firstCap} - First characters to upper case
 
-Patterns can also created manually using [this guide](https://github.com/asual/jquery-format). An example found below.
+Patterns can also be created manually using [this guide](https://github.com/asual/jquery-format). An example is found below.
 
 ```
 {column|MM/dd/yyy} {salary|##'###,###.00}

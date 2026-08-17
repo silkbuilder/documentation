@@ -24,7 +24,7 @@ Returns an Input instance.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | id | <code>String</code> |  | Unique identifier. |
-| type | <code>String</code> |  | The input type: text, textarea, code, sql, js, css, xml, xhtml, html, date, time, datetime, select, numeric, integer, decimal, checkbox, button, options, radio, password, file, email, hidden. |
+| type | <code>String</code> |  | The input type: text, textarea, code, sql, js, css, xml, xhtml, html, date, time, datetime, select, numeric, integer, decimal, checkbox, button, options, radio, password, file, email, hidden, external. |
 | label | <code>String</code> |  | The text used as the input's label. |
 | options | <code>Object</code> |  | Object containing the Input configuration options. |
 | initValue | <code>String</code> |  | The value that the Input will hold when created. |
@@ -56,7 +56,7 @@ Returns an Input instance.
 | [options.template] | <code>String</code> |  | A HTML schema defining the component read view. |
 | [options.target] | <code>String</code> |  | The HTML element in which the component will be rendered. |
 | [options.extraProperties] | <code>String</code> |  | To add extra HTML properties to the  |
-| [options.htmlConfigFile] | <code>String</code> | <code>/ckeditor-conf/bar-simple.js</code> | The JavaScript file containing the custom configuration for CKEditor. To be used with type "html". |
+| [options.htmlToolbar] | <code>String</code> |  | The Quill menu array. To be used with type "html". |
 | [options.stringList] | <code>String</code> |  | A JSON array which will serve as dataProvider for select, options, and radio. This array should contain objects with the properties' value and label. |
 | [options.prompt] | <code>String</code> |  | The provided text will be added as an extra option to the select usually used to request a value selection. |
 | [options.promptValue] | <code>String</code> |  | The value returned by the select "prompt" if the user selects it. |
@@ -74,12 +74,19 @@ Returns an Input instance.
 | [options.fileSizeLimit] | <code>Integer</code> |  | The number of MB allowed to upload. To use with a input type file. |
 | [options.timer] | <code>Integer</code> | <code>0</code> | The number of milliseconds before triggering the "timer" event when entering data. |
 | [option.toggleList] | <code>String</code> |  | The list of comma-separated elements that will be toggled together with the component. |
+| [option.autocomplete] | <code>String</code> |  | Determines if the input should accept autocomlete. True by default. |
 
 ## Methods
  <a name="+cleanClasses"></a>
 
 ### cleanClasses()
 Cleans the Input from markers like required, missing, and error.
+
+**Kind**: instance method of [<code>Input</code>](#Input)  
+<a name="Input+clear"></a>
+
+### clear()
+Clears the input value
 
 **Kind**: instance method of [<code>Input</code>](#Input)  
 <a name="Input+focus"></a>
@@ -382,7 +389,7 @@ If the function returns false it will cancel the update process.
 
 <a name="Input+Event_beforeUpload"></a>
 
-### on:beforeUpload (input, formData, fileName, fileSize)
+### on:beforeUpload (input, formData, fileName, fileSize, file)
 This event is triggered before a file is uploaded. Created with the ```Input.on("beforeUpload", function(Input, formData, fileName, fileSize){})``` method.
 If the function returns false it will cancel the update process.
 
@@ -394,6 +401,7 @@ If the function returns false it will cancel the update process.
 | formData | <code>Object</code> | The form used to upload the file. |
 | fileName | <code>String</code> | The name of the file to be uploaded. |
 | fileSize | <code>Integer</code> | The file's size. |
+| file | <code>Object</code> | The file element to be uploaded |
 
 <a name="Input+Event_change"></a>
 
@@ -429,9 +437,9 @@ This event is triggered when input's download button is clicked. Created with th
 This event is triggered when input's preview button is clicked. Created with the ```Input.on("clickPreview", function(){})``` method.
 
 **Kind**: event emitted by [<code>Input</code>](#Input)  
-<a name="Input+Event_fileValidate"></a>
+<a name="Input+Event_fileLoaded"></a>
 
-### on:fileValidate (Input, typeError, sizeError)
+### on:fileLoaded (Input, typeError, sizeError, file)
 This event is triggered after the file extension and size has been validated. Created with the ```Input.on("fileValidate", function(Input, typeError, sizeError){})``` method.
 
 **Kind**: event emitted by [<code>Input</code>](#Input)  
@@ -441,6 +449,21 @@ This event is triggered after the file extension and size has been validated. Cr
 | Input | <code>Object</code> | Reference to the Input. |
 | typeError | <code>Boolean</code> | True if the file extension type is not a match. |
 | sizeError | <code>Boolean</code> | True if the size is beyond set bounderies. |
+| file | <code>Object</code> | The file element to be uploaded |
+
+<a name="Input+Event_fileValidate"></a>
+
+### on:fileValidate (Input, typeError, sizeError, file)
+This event is triggered after the file extension and size has been validated and errors had been found. Created with the ```Input.on("fileValidate", function(Input, typeError, sizeError){})``` method.
+
+**Kind**: event emitted by [<code>Input</code>](#Input)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| Input | <code>Object</code> | Reference to the Input. |
+| typeError | <code>Boolean</code> | True if the file extension type is not a match. |
+| sizeError | <code>Boolean</code> | True if the size is beyond set bounderies. |
+| file | <code>Object</code> | The file element to be uploaded |
 
 <a name="Input+Event_filterLoad"></a>
 

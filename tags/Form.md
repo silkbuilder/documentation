@@ -38,6 +38,9 @@ Used standalone:
   confirmLabel=""
   confirmIcon=""
   confirmTarget=""
+  action=""
+  target=""
+  method=""
 />
 ```
 Used as a container:
@@ -74,6 +77,9 @@ Used as a container:
   confirmLabel=""
   confirmIcon=""
   confirmTarget=""
+  action=""
+  target=""
+  method=""
 >
    Contains: silk:Input and HTML components.
 </silk:Form>
@@ -92,7 +98,7 @@ Defines if the form's dialog bar containing the Submit and Cancel buttons should
 ### dialogTitle
 Sets a title for the editing dialog when the form is editable.<br>Default Value: *Empty*.
 ### dialogPosition
-Defines if the dialog will be placed at the top or the bottom of the form.<br>Default Value: *Empty*.
+Defines if the dialog will be placed at the page header, top or the bottom of the form.<br>If not provided the dialog is placed in the page's header by default.<br>Default Value: *Empty*.
 ### insertBt
 The name of the button that will be used to trigger an insert action.<br>Default Value: *Empty*.
 ### updateBt
@@ -143,3 +149,9 @@ Sets the label for the accept button in the confirmation dialog.<br>Default Valu
 Sets the confirmation dialog icon.<br>Default Value: *Empty*.
 ### confirmTarget
 Sets which actions will trigger the confirmation dialog.<br>Default Value: *Empty*.
+### action
+Set the action property. If used the form will use the tag FORM instead of a DIV.<br>Default Value: *Empty*.
+### target
+Sets the form's target.<br>Default Value: *Empty*.
+### method
+Sets the form's method.<br>Default Value: *Empty*.

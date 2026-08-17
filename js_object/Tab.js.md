@@ -106,7 +106,7 @@ Removes the tab based on the provided index.
 
 <a name="Tab+setIndex"></a>
 
-### setIndex(index)
+### setIndex(index, execClick)
 Activates a tab based on the provided index
 
 **Kind**: instance method of [<code>Tab</code>](#Tab)  
@@ -114,6 +114,7 @@ Activates a tab based on the provided index
 | Param | Type | Description |
 | --- | --- | --- |
 | index | <code>Integer</code> | The tab index |
+| execClick | <code>Boolean</code> | (Optional) If false the on click event will not be called. |
 
 <a name="Tab+show"></a>
 

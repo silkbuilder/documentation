@@ -113,7 +113,7 @@ The upload service receives the fulName in the request. This is added to the fil
 	/*
 	 * Gets the fullName value and replaces spaces with underscore.
 	 */
-	String fullName = form.getValue();
+	String fullName = form.getValue("file-input");
 	fullName = fullName.toLowerCase().replaceAll(" ","_");
 
 	/*

@@ -15,7 +15,7 @@ Calls and executes the provided function's name without parameters.
 <a name="dateToString"></a>
 
 ## dateToString(date) ⇒ <code>String</code>
-Convert a Date object to the SIK string-date with formar "YYY-MM-DD HH:MM:SS.MMS". Sample: "2022-09-09 09:40:43.226".
+Convert a Date object to the Silk string-date with formar "YYY-MM-DD HH:MM:SS.MMS". Sample: "2022-09-09 09:40:43.226".
 The Silk ORM returns and received date data in this format.
 
 **Kind**: global function  
@@ -54,6 +54,26 @@ Function to download the provided text into a file.
 Escapes HTML to be displayed with in a div.
 
 **Kind**: global function  
+<a name="getBootstrapBreakpoint"></a>
+
+## getBootstrapBreakpoint() ⇒ <code>&#x27;xxl&#x27;</code> \| <code>&#x27;xl&#x27;</code> \| <code>&#x27;lg&#x27;</code> \| <code>&#x27;md&#x27;</code> \| <code>&#x27;sm&#x27;</code> \| <code>&#x27;xs&#x27;</code> \| <code>&#x27;xxx&#x27;</code>
+Determines the current active Bootstrap 5 responsive breakpoint based on
+the viewport width, using CSS media queries via `window.matchMedia`.
+
+Breakpoints are checked in descending order (xxl -> xs), so the largest
+matching breakpoint is returned first.
+
+**Kind**: global function  
+**Returns**: <code>&#x27;xxl&#x27;</code> \| <code>&#x27;xl&#x27;</code> \| <code>&#x27;lg&#x27;</code> \| <code>&#x27;md&#x27;</code> \| <code>&#x27;sm&#x27;</code> \| <code>&#x27;xs&#x27;</code> \| <code>&#x27;xxx&#x27;</code> - The key of the
+  current Bootstrap 5 breakpoint, or `'xxx'` if no breakpoint matches
+  (e.g. when run in a non-browser environment without `window`).  
+**Example**  
+```js
+const bp = getBootstrap5Breakpoint();
+if (bp === 'xs' || bp === 'sm') {
+  // handle mobile layout
+}
+```
 <a name="getFormattedValue"></a>
 
 ## getFormattedValue(value, formatter) ⇒ <code>String</code>
@@ -134,7 +154,7 @@ Generates a UUID Value.
 <a name="ifTag"></a>
 
 ## ifTag($container)
-Evaluates HTML tags for silk-if css classes in the provided JQuery object. If tags found evaluates the attribute data-if criteria to keep or remove the tag.
+Evaluates HTML tags for keepIf property in the provided JQuery object. If tags found evaluates the attribute data-if criteria to keep or remove the tag.
 
 **Kind**: global function  
 
@@ -204,7 +224,7 @@ Returns true if the object is not undefined or null or empty.
 <a name="isNumeric"></a>
 
 ## isNumeric()
-Return  if the string is a number
+Returns true if the provided parameter is a number
 
 **Kind**: global function  
 <a name="isRunningStandalone"></a>
@@ -227,17 +247,72 @@ Returns a string with the provided number of characters starting from the left.
 
 <a name="postToService"></a>
 
-## postToService(serviceURL, data, handleFunction)
-Excutes a jQuery ajax post/json call to the provided URL. The handle function received the parameter result, which can be true or false, and the response data.
+## postToService(serviceURL, data, handleFunction, context, progressFunction, timeout)
+Executes a POST to the provided URL. Uses XHR so that chunked responses
+can be reported via progressFunction while the request is still in progress.
+Expects the complete response body to be pure, valid JSON.
 
 **Kind**: global function  
 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| serviceURL | <code>String</code> |  |  |
+| data | <code>Object</code> |  | Plain JS object (serialized as form-urlencoded) |
+| handleFunction | <code>function</code> |  | called as handleFunction(success, responseOrError) |
+| context | <code>\*</code> |  | `this` value for the callbacks (optional) |
+| progressFunction | <code>function</code> |  | called with each new chunk of response text |
+| timeout | <code>Number</code> | <code>0</code> | Timeout in milliseconds (0 = no timeout) |
+
+<a name="removeTrailingEmptyParagraphs"></a>
+
+## removeTrailingEmptyParagraphs(html) ⇒ <code>string</code>
+Removes one or more trailing "empty" <p> paragraphs from the end of an
+HTML string.
+
+A paragraph is considered empty if it contains nothing but whitespace,
+a non-breaking space (&nbsp;), and/or a single <br> — which covers the
+common leftover empty paragraphs that rich-text editors like Quill tend
+to append after the last real line of content.
+
+The removal repeats until no more trailing empty paragraphs are found,
+so multiple stacked empty paragraphs at the end of the string are all
+stripped, not just the last one.
+
+Implementation note: this is a lightweight regex-based cleanup, not a
+full HTML parse — it assumes reasonably well-formed markup and only
+looks at the tail of the string. It won't catch empty paragraphs that
+contain nested empty elements (e.g. <p><span></span></p>) or malformed
+HTML. For those cases, parse via DOMParser and walk body.lastElementChild
+instead.
+
+**Kind**: global function  
+**Returns**: <code>string</code> - The input string with trailing empty <p> tags removed.
+  Returns the input unchanged (as-is) if it isn't a string.  
+
 | Param | Type | Description |
 | --- | --- | --- |
-| serviceURL | <code>String</code> | The URL to the target service |
-| data | <code>Object</code> | The data to be submited |
-| handleFunction | <code>function</code> | The functin which will received the response. |
+| html | <code>string</code> | The HTML string to clean up. |
 
+**Example**  
+```js
+removeTrailingEmptyParagraphs('<p>Hello</p><p></p>');
+// => "<p>Hello</p>"
+```
+**Example**  
+```js
+removeTrailingEmptyParagraphs('<p>Hello</p><p><br></p>');
+// => "<p>Hello</p>"
+```
+**Example**  
+```js
+removeTrailingEmptyParagraphs('<p>Hello</p><p>&nbsp;</p><p></p>');
+// => "<p>Hello</p>"
+```
+**Example**  
+```js
+removeTrailingEmptyParagraphs('<p></p>');
+// => ""
+```
 <a name="renderCode"></a>
 
 ## renderCode() ⇒ <code>String</code>
@@ -300,7 +375,7 @@ Cleans data from HTML tags.
 <a name="stringToDate"></a>
 
 ## stringToDate(stringDate) ⇒ <code>Date</code>
-Convert a SILK string-date data to data object. The string should have the formar "YYY-MM-DD HH:MM:SS.MMS". Sample: "2022-09-09 09:40:43.226".
+Convert a Silk string-date data to data object. The string should have the formar "YYY-MM-DD HH:MM:SS.MMS". Sample: "2022-09-09 09:40:43.226".
 The Silk ORM returns and received date data in this format.
 
 **Kind**: global function  
