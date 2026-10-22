@@ -4,11 +4,17 @@ The *silk:Content* tag determines the area where the silk components will be loc
 ## Tag Definition
 Used standalone:
 ```xml
-<silk:Content/>
+<silk:Content
+  cssClass="btn-primary"
+  cssStyle=""
+/>
 ```
 Used as a container:
 ```xml
-<silk:Content>
+<silk:Content
+  cssClass="btn-primary"
+  cssStyle=""
+>
    Contains: Silk and HTML components.
 </silk:Content>
 ```
@@ -32,3 +38,9 @@ The *silk:Content* is located inside the silk:Page and below the *silk:Head* if 
   </silk:Content >
 </silk:Page>
 ```
+
+## Properties 
+### cssClass
+The classes to stylize the button. It expects Bootstrap classes. The button already has the "btn" class and is initialized with "btn-primary".<br>Default Value: *btn-primary*.
+### cssStyle
+To add extra styling using CSS styling elements.<br>Default Value: *Empty*.

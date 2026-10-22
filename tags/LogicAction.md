@@ -30,4 +30,4 @@ Sets the LogicGrid connected to the logic action. This is required if the action
 ### target<sup>*</sup>
 Defines the component or components, separated by commas, that are toggled by the logic action. This could include the name of a function that will be called every time the logic status changes.<br>Default Value: *Empty*.
 ### criteria<sup>*</sup>
-The group values determining the outcome of the logic action: value1:value2:...<br>Default Value: *Empty*.
+The group values determining the outcome of the logic action: value1:value2:...<br>This gets overwrite if the criteria is provided as tag body.<br>Default Value: *Empty*.

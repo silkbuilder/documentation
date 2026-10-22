@@ -34,7 +34,7 @@ Used standalone:
   mode="false"
   cssClass=""
   extraProperties=""
-  htmlToolbar="/ckeditor-conf/bar-simple.js"
+  htmlToolbar="simple"
   htmlTheme="/ckeditor-conf/bar-simple.js"
   target=""
   prompt=""
@@ -119,7 +119,7 @@ The extra CSS classes to use with the input element.<br>Default Value: *Empty*.
 ### extraProperties
 Used to add extra HTML properties to the unavailable using the *silk:Input* properties.<br>Default Value: *Empty*.
 ### htmlToolbar
-The JavaScript array to fill the Quill toolbar. To be used with type "html".<br>Default Value: */ckeditor-conf/bar-simple.js*.
+Defines the toolbar that will be loaded. The values are:<br>- none<br>- simple<br>- regular<br>- full<br>It also accepts the name of the JS Object defining the editor's toolbar.<br>Default Value: *simple*.
 ### htmlTheme
 The JavaScript file containing the custom configuration for CKEditor. To be used with type "html".<br>Default Value: */ckeditor-conf/bar-simple.js*.
 ### target

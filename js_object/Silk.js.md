@@ -10,6 +10,8 @@
 | dpLoader | <code>Array</code> | An array containing the list of DataProvider objects used by the application. |
 | $screen | <code>Object</code> | A jQuery object pointing to the page's container. |
 | focusedPage | <code>String</code> | The name of the page is currently in focus. |
+| $focusedPage | <code>Object</code> | A jQuery object pointing to the focused page. |
+| focusedPageIndex | <code>Integer</code> | The index of the page currently in focus. |
 
 
 

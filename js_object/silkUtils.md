@@ -12,6 +12,82 @@ Calls and executes the provided function's name without parameters.
 | --- | --- | --- |
 | fnString | <code>String</code> | The function's name |
 
+<a name="camelToCapitalCase"></a>
+
+## camelToCapitalCase(str) ⇒ <code>string</code>
+Converts a camelCase string into a space-separated Capital Case string.
+
+**Kind**: global function  
+**Returns**: <code>string</code> - The formatted Capital Case string with spaces.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| str | <code>string</code> | The camelCase string to transform. |
+
+**Example**  
+```js
+// Returns "Camel Case String"
+camelToCapitalCase("camelCaseString");
+```
+**Example**  
+```js
+// Returns "This Is A Valid Test"
+camelToCapitalCase("thisIsAValidTest");
+```
+<a name="copyToClipboard"></a>
+
+## copyToClipboard(textToCopy) ⇒ <code>Promise.&lt;boolean&gt;</code>
+Copies the given text to the user's clipboard.
+
+Attempts the modern Clipboard API first (`navigator.clipboard.writeText`).
+If that fails or is unavailable (e.g. due to browser restrictions, lack of
+permissions, or an insecure context), it falls back to the legacy
+`document.execCommand('copy')` method using a hidden textarea.
+
+Must be called from within a genuine user gesture (e.g. a click handler)
+for clipboard permissions to be granted reliably in most browsers.
+
+**Kind**: global function  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - Resolves to `true` if the copy succeeded
+  (via either method), or `false` if all copy methods failed.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| textToCopy | <code>string</code> | The text to copy to the clipboard. |
+
+**Example**  
+```js
+// Basic usage inside a click handler
+button.addEventListener('click', async () => {
+  const success = await copyToClipboard("Hello, world!");
+  console.log(success ? "Copied!" : "Copy failed");
+});
+```
+**Example**  
+```js
+// Fire-and-forget (no confirmation needed)
+button.addEventListener('click', () => {
+  copyToClipboard("Some text");
+});
+```
+**Example**  
+```js
+// Copying dynamic content, e.g. from an input field
+copyButton.addEventListener('click', async () => {
+  const inputValue = document.querySelector('#myInput').value;
+  await copyToClipboard(inputValue);
+});
+```
+**Example**  
+```js
+// Reacting to failure with user feedback
+button.addEventListener('click', async () => {
+  const success = await copyToClipboard("Copy me");
+  if (!success) {
+    alert("Unable to copy text. Please copy it manually.");
+  }
+});
+```
 <a name="dateToString"></a>
 
 ## dateToString(date) ⇒ <code>String</code>
@@ -384,4 +460,10 @@ The Silk ORM returns and received date data in this format.
 | --- | --- |
 | stringDate | The SILK string-date value to be converted. |
 
+<a name="unescapeHtml"></a>
+
+## unescapeHtml()
+Escapes HTML to be displayed with in a div.
+
+**Kind**: global function  
 

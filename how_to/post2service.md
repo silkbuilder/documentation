@@ -79,6 +79,14 @@ postToService(
 
 Below is sample code for a **SilkBuilder** service configured to send chunk messages back to `postToService`, using the `writeToResponse` method of the `Http` class. This pattern is only needed when the service reports progress on a long-running process — a service that just returns a result can skip chunking entirely and write its JSON normally in the JSP body.
 
+The method `writeToResponse` expects two paramater: response and text. The main class is `com.oopsclick.silk.utils.Http`.
+
+```java
+void writeToResponse(HttpServletResponse response, String text)
+```
+
+Sample code:
+
 ```java
 <java>@ page
 	import="com.oopsclick.silk.utils.Http"
@@ -106,7 +114,7 @@ Below is sample code for a **SilkBuilder** service configured to send chunk mess
 	Thread.sleep(600);
 
 	/*
-	 * JSP created manually for testing purposes
+	 * JSON created manually for testing purposes
 	 */
 	Http.writeToResponse(
 		response,

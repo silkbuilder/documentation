@@ -17,18 +17,32 @@
 Returns a Tile instance.
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>String</code> | Unique identifier. |
-| option | <code>Object</code> | Object containing the configuration. |
-| [option.dataSource] | <code>String</code> | Unique identifier of the dataProvider used to fill the Tile. |
-| [option.columns] | <code>String</code> | The number of tiles to define a row's columns. All tiles will be grouped in rows. |
-| [option.rowClass] | <code>String</code> | The CSS class used by the row div. This only works when the column property is more than 0. |
-| [option.content] | <code>String</code> | The HTML template used to generate the  |
-| [option.rendererFn] | <code>String</code> | The function that re-processes the generated tile's HTML. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| id | <code>String</code> |  | Unique identifier. |
+| option | <code>Object</code> |  | Object containing the configuration. |
+| [option.dataSource] | <code>String</code> |  | Unique identifier of the dataProvider used to fill the Tile. |
+| [option.columns] | <code>String</code> |  | The number of tiles to define a row's columns. All tiles will be grouped in rows. |
+| [option.rowClass] | <code>String</code> |  | The CSS class used by the row div. This only works when the column property is more than 0. |
+| [option.content] | <code>String</code> |  | The HTML template used to generate the  |
+| [option.rendererFn] | <code>String</code> |  | The function that re-processes the generated tile's HTML. |
+| [option.selectedClass] | <code>String</code> |  | The class that defines the selected cell. |
+| [option.targetPage] | <code>String</code> |  | Unique identifier of the page which will become active when a row is selected. |
+| [option.autoSelect] | <code>Boolean</code> | <code>true</code> | If true, the table will automatically load the data from the dataProvider. If false, it will wait for the select command. |
 
 ## Methods
- <a name="+appendCell"></a>
+ <a name="+addComponent"></a>
+
+### addComponent(component)
+Adds a new component to the components array.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| component | <code>Object</code> | The component object. |
+
+<a name="Tile+appendCell"></a>
 
 ### appendCell(id)
 Add a new cell to the end of the 
@@ -39,10 +53,57 @@ Add a new cell to the end of the
 | --- | --- |
 | id | The ID of the element to be added. |
 
+<a name="Tile+getComponents"></a>
+
+### getComponents() ⇒ <code>Array</code>
+Gets the loaded component array.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+<a name="Tile+getDataSource"></a>
+
+### getDataSource() ⇒ <code>Object</code>
+Gets a reference to the dataSource.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
 <a name="Tile+getID"></a>
 
 ### getID() ⇒ <code>String</code>
 Returns the component's unique identifier.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+<a name="Tile+getPkColumn"></a>
+
+### getPkColumn() ⇒ <code>String</code>
+Gets the data primary key.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+<a name="Tile+getPkValue"></a>
+
+### getPkValue() ⇒ <code>String</code>
+Gets the primary key's value of the selected row.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+<a name="Tile+getSelectedItem"></a>
+
+### getSelectedItem(columnName) ⇒ <code>Object</code> \| <code>String</code>
+Returns the selected item object, or the column's value if a columnName is provided.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| columnName | <code>String</code> | The column's value to return. Optional. |
+
+<a name="Tile+isTreeData"></a>
+
+### isTreeData() ⇒ <code>Boolean</code>
+Returns if the table is set to evaluate a tree data structure.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+<a name="Tile+length"></a>
+
+### length() ⇒ <code>Integer</code>
+Returns the number of rows loaded in the table.
 
 **Kind**: instance method of [<code>Tile</code>](#Tile)  
 <a name="Tile+load"></a>
@@ -74,6 +135,35 @@ Add a new cell to the beginning of the tile's elements.
 | --- | --- | --- |
 | id | <code>Integer</code> | The ID of the element to be added. |
 
+<a name="Tile+selectCell"></a>
+
+### selectCell(index)
+Selects the cell in the tile list using the provided index. If the property *selectedIndex* is manually changed, this method can be called without the parameter for visual synchronization.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+
+| Param | Description |
+| --- | --- |
+| index | The table row index |
+
+<a name="Tile+setSelectedItem"></a>
+
+### setSelectedItem(columnName, value)
+Sets the value of the provided column in the selected row.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| columnName | <code>String</code> | The column to be updated |
+| value | <code>String</code> | The new value |
+
+<a name="Tile+size"></a>
+
+### size() ⇒ <code>Integer</code>
+Returns the number of rows in the table.
+
+**Kind**: instance method of [<code>Tile</code>](#Tile)  
 <a name="Tile+Event_afterLoad"></a>
 
 ## Events
@@ -104,7 +194,7 @@ Event triggered when a tile cell is clicked. Created with the ```Tile.on("click"
 
 <a name="Tile+Event_click"></a>
 
-### on:click (item, $content, dpIndex, cellIndex, event)
+### on:click (item, $content, dpIndex, cellIndex, realClick, event)
 This event is triggered when a tile cell is clicked. Created with the ```Tile.on("click", function(item,$content,dpIndex,rowIndex,event){})``` method.
 
 **Kind**: event emitted by [<code>Tile</code>](#Tile)  
@@ -115,6 +205,7 @@ This event is triggered when a tile cell is clicked. Created with the ```Tile.on
 | $content | <code>JQuery</code> | The jQuery object of the selected  |
 | dpIndex | <code>Integer</code> | The DataProvider index of the selected  |
 | cellIndex | <code>integer</code> | The cell index of the selected  |
+| realClick | <code>Boolean</code> | Returns true if the "click" has been triggered by a physical click. |
 | event | <code>Object</code> | The JavaScript click event object. |
 
 <a name="Tile+Event_filterLoad"></a>

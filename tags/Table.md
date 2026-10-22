@@ -8,6 +8,7 @@ Used as a container:
   id=""
   title=""
   cssClass=""
+  containerClass=""
   dataSource=""
   autoSelect="true"
   selectable="true"
@@ -30,6 +31,7 @@ Used as a container:
   renderIf=""
   init="true"
   toggleList=""
+  pill=""
 >
    Contains: silk:Column, silk:Header, and silk:Body components.
 </silk:Table>
@@ -109,6 +111,8 @@ The component's unique identifier.<br>Default Value: *Empty*.
 The table's title. This is not a required attribute.<br>Default Value: *Empty*.
 ### cssClass
 A list of extra CSS classes styling the table.<br>Default Value: *Empty*.
+### containerClass
+A list of extra CSS classes styling the table's container.<br>Default Value: *Empty*.
 ### dataSource
 The ID of the *silk:DataProvider* used to fill the table content.<br>Default Value: *Empty*.
 ### autoSelect
@@ -153,3 +157,5 @@ It contains the logic sentence defining whether the component should be rendered
 Indicates if the table should initialize at creation time. This property should be set to *true* if it will be initialized programmatically.<br>Default Value: *true*.
 ### toggleList
 The list of comma-separated elements that will be toggled together with the component.<br>The value "parent" toggles the immediate parent element.<br>The value "grandpa" toggles the grandparent element.<br><br>Default Value: *Empty*.
+### pill
+Defines if the table will use rows or table styled as pills.<br>The accepted values are true, row, or table.<br>This will inject the classes table-pill or row-pill to the table structure.<br>Default Value: *Empty*.

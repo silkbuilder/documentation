@@ -40,13 +40,13 @@ Email templates support inserting variables, which act as data placeholders. Dat
 
 A subject example:
 
-```cmd
+```
 Welcome to the ${event-name} event!
 ```
 
 A body example:
 
-```cmd
+```
 Dear ${full-name},
 We are happy to have you at the ${event-name} event!
 ```

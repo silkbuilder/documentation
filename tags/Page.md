@@ -16,6 +16,7 @@ Used as a container:
   xlLayout=""
   xxLayout=""
   renderIf=""
+  hasHeader=""
 >
    Contains: SilkBuilder components and HTML components.
 </silk:Page>
@@ -45,3 +46,5 @@ The page layout distribution for extra-long screens.<br>Default Value: *Empty*.
 The page layout distribution for extra extra long size screens.<br>Default Value: *Empty*.
 ### renderIf
 It contains the logic sentence defining whether the component should be rendered.<br>The logic statement's explanation is in the <a href="how_to/server_code_logic.md">Server Code Logic</a> documentation.<br>Default Value: *Empty*.
+### hasHeader
+Default Value: *Empty*.

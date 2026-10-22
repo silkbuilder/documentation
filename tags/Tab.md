@@ -7,6 +7,8 @@ Used as a container:
 <silk:Tab
   id=""
   cssClass=""
+  pill=""
+  onlyTabs=""
 >
    Contains: TabItem
 </silk:Tab>
@@ -18,3 +20,7 @@ Used as a container:
 The Tab's unique identifier.<br>Default Value: *Empty*.
 ### cssClass
 Set the custom CSS class for tab HTML component.<br>Default Value: *Empty*.
+### pill
+Default Value: *Empty*.
+### onlyTabs
+Default Value: *Empty*.

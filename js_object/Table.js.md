@@ -37,6 +37,7 @@ Returns a Table instance.
 | [option.collapsedLevel] | <code>Integer</code> |  | Indicates the number of open levels. Other levels will remain closed. |
 | [option.selectable] | <code>Boolean</code> | <code>true</code> | If true, the row will change color when selected. |
 | [option.dpSearch] | <code>Boolean</code> | <code>false</code> | If false, the search is done in the loaded data. If true, the search leads to a dataProvider select call. It can also receive the name of the DataProvider to be loaded. |
+| [option.parentList] | <code>String</code> |  | Contains the name of the list which will trigger a reload. |
 | [option.input] | <code>Boolean</code> | <code>false</code> | If true, it will create input fields for the configured columns. |
 | [option.toggleList] | <code>String</code> |  | The list of comma-separated elements that will be toggled together with the component. |
 

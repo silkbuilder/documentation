@@ -14,6 +14,7 @@ Used standalone:
   loader="true"
   renderIf=""
   jsLib=""
+  bodyClass=""
 />
 ```
 Used as a container:
@@ -28,6 +29,7 @@ Used as a container:
   loader="true"
   renderIf=""
   jsLib=""
+  bodyClass=""
 >
    Contains: Other HTML and/or Silk components. *
 </silk:App>
@@ -52,4 +54,6 @@ Defines if the loader image (.gif) will be displayed. The default value is "true
 ### renderIf
 It contains the logic sentence defining whether the component should be rendered.<br>The logic statement's explanation is in the <a href="how_to/server_code_logic.md">Server Code Logic</a> documentation.<br>Default Value: *Empty*.
 ### jsLib
-Default Value: *Empty*.
+It contains the logic sentence defining whether the component should be rendered.<br>The logic statement's explanation is in the <a href="how_to/server_code_logic.md">Server Code Logic</a> documentation.<br>Remove the library element from the library list.<br>At run time, the remaining element in the library list will be removed.<br>Default Value: *Empty*.
+### bodyClass
+Sets the class for the BODY tag<br>Default Value: *Empty*.

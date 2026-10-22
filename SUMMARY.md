@@ -89,3 +89,4 @@
   * [Emailing Process](how_to/emails.md)
   * [File to Response](how_to/file2response.md)
   * [Sending Data to a Service for Processing](how_to/post2service.md)
+  * [Logic Grid](how_to/logic_grid.md)

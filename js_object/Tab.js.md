@@ -141,14 +141,14 @@ Returns the number of tabs
 **Kind**: instance method of [<code>Tab</code>](#Tab)  
 <a name="Tab+toggle"></a>
 
-### toggle(value)
+### toggle(status)
 Toggles the component's visibility. If a parameter is provided, *true* shows the component, *false* hides the component.
 
 **Kind**: instance method of [<code>Tab</code>](#Tab)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>Boolan</code> | The logic value. |
+| status | <code>Boolan</code> | The logic value. |
 
 <a name="Tab+toggleTab"></a>
 
